@@ -37,7 +37,7 @@ class UserAddressSerializer(serializers.HyperlinkedModelSerializer):
                 'line4',
                 'state',
                 'postcode',
-                'country',
+                # 'country',
                 )
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
