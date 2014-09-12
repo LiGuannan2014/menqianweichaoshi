@@ -1,6 +1,7 @@
 from oscar.apps.catalogue.models import *
 from weichao.serializers import *
 from rest_framework import generics
+from django.contrib.auth import User
 
 class CategoryList(generics.ListCreateAPIView):
     queryset = Category.objects.all()
