@@ -32,8 +32,8 @@ urlpatterns = patterns('',
         name='product-list'),
     url(r'^product/(?P<pk>[0-9]+)/$',
         views.ProductDetail.as_view(),
-        name='product-detail')
+        name='product-detail'),
     url(r'^user/(?P<pk>[0-9]+)/$'),
         views.UserDetail.as_view(),
-        name='user-detail'
+        name='user-detail')
 )
