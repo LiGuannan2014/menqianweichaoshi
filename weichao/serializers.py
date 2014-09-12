@@ -1,5 +1,7 @@
 from oscar.apps.catalogue import models
 from rest_framework import serializers
+from django.contrib.auth import User
+
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     # snippets = serializers.HyperlinkedRelatedField(many=True, view_name='snippet-detail')
@@ -41,4 +43,17 @@ class ProductClassSerializer(serializers.HyperlinkedModelSerializer):
                 'slug',
                 'track_stock',
                 'requires_shipping',
+                )
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+                'username',
+                'password',
+                'first_name',
+                'last_name',
+                'email',
+                'last_login',
+                'date_joined',
                 )
