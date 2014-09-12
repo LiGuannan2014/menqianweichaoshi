@@ -2,16 +2,42 @@ from oscar.apps import catalogue, address
 from rest_framework import serializers
 
 class UserAddressSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = address.models.Country
+        fields = (
+                'display_order',
+                'iso_3166_1_a2',
+                'iso_3166_1_a3',
+                'iso_3166_1_numeric',
+                'name',
+                'printable_name',
+                'is_shipping_country',
+                )
+
+class UserAddressSerializer(serializers.HyperlinkedModelSerializer):
     user = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail')
+    country = serializers.HyperlinkedRelatedField(many=False, view_name='country-detail')
 
     class Meta:
         model = address.models.UserAddress
         fields = (
-                'is_default_for_shipping',
-                'is_default_for_billing',
-                'num_orders',
-                'hash',
                 'date_created',
+                'hash',
+                'is_default_for_billing',
+                'is_default_for_shipping',
+                'num_orders',
+                'phone_number',
+                'notes',
+                'title',
+                'first_name',
+                'last_name',
+                'line1',
+                'line2',
+                'line3',
+                'line4',
+                'state',
+                'postcode',
+                'country',
                 )
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):

@@ -3,6 +3,14 @@ from oscar.apps.address.models import *
 from weichao.serializers import *
 from rest_framework import generics
 
+class CountryList(generics.ListCreateAPIView):
+    queryset = Country.objects.all()
+    serializer_class = CountrySerializer
+
+class CountryDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Country.objects.all()
+    serializer_class = CountrySerializer
+
 class UserAddressList(generics.ListCreateAPIView):
     queryset = UserAddress.objects.all()
     serializer_class = UserAddressSerializer
@@ -10,6 +18,7 @@ class UserAddressList(generics.ListCreateAPIView):
 class UserAddressDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = UserAddress.objects.all()
     serializer_class = UserAddressSerializer
+
 
 class CategoryList(generics.ListCreateAPIView):
     queryset = Category.objects.all()
