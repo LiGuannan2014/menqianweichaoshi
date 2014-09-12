@@ -16,6 +16,13 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
+    url(r'^country/$',
+        views.CountryList.as_view(),
+        name='country-list'),
+    url(r'^country/(?P<pk>[0-9]+)/$',
+        views.CountryDetail.as_view(),
+        name='country-detail'),
+
     url(r'^useraddress/$',
         views.UserAddressList.as_view(),
         name='useraddress-list'),
