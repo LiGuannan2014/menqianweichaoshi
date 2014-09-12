@@ -15,6 +15,19 @@ class CountrySerializer(serializers.HyperlinkedModelSerializer):
                 )
 
 class UserAddressSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = address.models.Country
+        fields = (
+                'display_order',
+                'iso_3166_1_a2',
+                'iso_3166_1_a3',
+                'iso_3166_1_numeric',
+                'name',
+                'printable_name',
+                'is_shipping_country',
+                )
+
+class UserAddressSerializer(serializers.HyperlinkedModelSerializer):
     user = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail')
     country = serializers.HyperlinkedRelatedField(many=False, view_name='country-detail')
 
