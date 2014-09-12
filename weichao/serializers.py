@@ -1,11 +1,24 @@
-from oscar.apps.catalogue import models
+from oscar.apps import catalogue, address
 from rest_framework import serializers
+
+class UserAddressSerializer(serializers.HyperlinkedModelSerializer):
+    user = serializers.HyperlinkedRelatedField(many=False, view_name='user-detail')
+
+    class Meta:
+        model = address.models.UserAddress
+        fields = (
+                'is_default_for_shipping',
+                'is_default_for_billing',
+                'num_orders',
+                'hash',
+                'date_created',
+                )
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     # snippets = serializers.HyperlinkedRelatedField(many=True, view_name='snippet-detail')
 
     class Meta:
-        model = models.Category
+        model = catalogue.models.Category
         fields = (
                 'name',
                 'image',
@@ -19,7 +32,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     recommeded_products = serializers.HyperlinkedRelatedField(many=True, view_name='product-detail')
 
     class Meta:
-        model = models.Product
+        model = catalogue.models.Product
         fields = (
                 'upc',
                 'url',
@@ -34,7 +47,7 @@ class ProductClassSerializer(serializers.HyperlinkedModelSerializer):
     # snippets = serializers.HyperlinkedRelatedField(many=True, view_name='snippet-detail')
 
     class Meta:
-        model = models.ProductClass
+        model = catalogue.models.ProductClass
         fields = (
                 'url',
                 'name',

@@ -1,6 +1,15 @@
 from oscar.apps.catalogue.models import *
+from oscar.apps.address.models import *
 from weichao.serializers import *
 from rest_framework import generics
+
+class UserAddressList(generics.ListCreateAPIView):
+    queryset = UserAddress.objects.all()
+    serializer_class = UserAddressSerializer
+
+class UserAddressDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = UserAddress.objects.all()
+    serializer_class = UserAddressSerializer
 
 class CategoryList(generics.ListCreateAPIView):
     queryset = Category.objects.all()
